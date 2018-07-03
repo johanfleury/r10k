@@ -36,9 +36,11 @@ module R10K
 
       def setup_logging
         syslog = @opts.delete(:syslog)
+        syslog_facility = @opts.delete(:'syslog-facility')
 
         if syslog
           R10K::Logging.syslog = true
+          R10K::Logging.syslog_facility = syslog_facility
         end
 
         if @opts.key?(:loglevel)
